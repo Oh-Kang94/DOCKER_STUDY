@@ -1,0 +1,19 @@
+FROM ubuntu:24.04
+# 작성자 표기 및 메타데이터 추가
+LABEL maintainer="KangHyeon, Oh <okh19941994@naver.com>"
+LABEL "purpose"="practice"
+
+# 이미지를 만들기 위환 컨테이너 내부 명령어 실행
+RUN apt-get update
+RUN apt-get install apache2 -y
+# 추가할 파일 옮기기
+ADD test.html /var/www/html
+# 명령어를 실행할 디렉토리 설정
+WORKDIR /var/www/html
+
+# 이미지 내부에서 행동할거 
+RUN ["/bin/bash", "-c", "echo hello >> test2.html"]
+
+# 이미지에서 노출할 포트 지정
+EXPOSE 80
+CMD ["apachectl", "-DFOREGROUND"]

@@ -1,0 +1,6 @@
+FROM alpine
+
+RUN echo "This is on build Test"
+
+ONBUILD RUN echo "on build" >> /on_build_file
+
