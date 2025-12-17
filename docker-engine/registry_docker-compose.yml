@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  my_registry:
+    image: registry:2.6
+    container_name: my_registry
+    ports:
+      - "5000:5000"
+    restart: always
+
+  my_registry_nginx:
+    image: nginx:1.27
+    container_name: my_registry_nginx
+    ports:
+      - "443:443"
+    depends_on:
+      - my_registry
+    volumes:
+      - ./:/etc/nginx/conf.d
+    restart: always
