@@ -38,3 +38,7 @@ Temporary Items
 
 # Volume
 volume
+
+# Ai Tools
+.serena/
+.tokensave/
