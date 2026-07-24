@@ -1,6 +1,6 @@
-# Docker 학습 계획
+# Docker와 Kubernetes 학습 계획
 
-이 문서는 Docker 노트에서 빠진 주제를 확인하기 위한 참고 목차다. 실제 작성 순서와 범위는 사용자가 정한다.
+이 문서는 Docker와 Kubernetes 노트에서 빠진 주제를 확인하기 위한 참고 목차다. 실제 작성 순서와 범위는 사용자가 정한다.
 
 ## 문서 보강 기준
 
@@ -68,8 +68,32 @@
 
 완료 과제: 서비스를 배포·확장·업데이트하고 실패한 업데이트를 롤백한 뒤 각 단계의 task 변화를 설명한다.
 
+### 7. Kubernetes 설치
+
+- 로컬, self-managed와 managed Kubernetes 환경의 차이
+- Minikube를 이용한 로컬 개발 클러스터
+- K3s를 이용한 경량 server·agent 클러스터
+- kubeadm을 이용한 control plane·worker node 구성
+- kOps와 GKE의 클라우드 클러스터 관리 방식
+
+완료 과제: 목적에 따라 설치 방법을 선택하고 Minikube, K3s와 kubeadm의 control plane 관리 책임과 기본 구성 차이를 설명한다.
+
+### 8. Kubernetes 기본 리소스
+
+- Kubernetes 오브젝트와 선언형 YAML Manifest
+- control plane과 node 구성 요소의 역할
+- Pod의 lifecycle, multi-container와 sidecar
+- ReplicaSet의 reconciliation과 label selector
+- Deployment의 rolling update와 rollback
+- Service, EndpointSlice, ClusterIP, NodePort와 LoadBalancer
+- `externalTrafficPolicy`와 ExternalName의 동작 차이
+
+완료 과제: Deployment로 Pod 세 개를 배포하고 Service로 연결한 뒤 Pod 교체, scale, rolling update와 rollback 과정에서 ReplicaSet·EndpointSlice의 변화를 설명한다.
+
 ## 현재 문서 상태
 
-최근 변경은 `docker-swarm/3.swarm-mode-service.md`이며, 서비스 생성에 대한 짧은 설명과 예시가 들어 있다. Docker Compose 목차는 아직 비어 있다.
+Docker Compose는 사용 이유부터 Swarm Stack 연동까지 다섯 문서가 보강되었다. Kubernetes 설치는 환경 비교, Minikube, kubeadm, K3s, kOps와 GKE의 여섯 문서로 정리되어 있다.
+
+최근 변경은 `k8s-start/`이며 Kubernetes 오브젝트와 클러스터 구조, Pod, ReplicaSet, Deployment와 Service의 기본 흐름을 다섯 문서로 보강했다. 문서 예시는 아직 실제 클러스터에서 실행하지 않았다.
 
 이는 추천 진도가 아니다. 사용자가 새 목차나 메모를 작성하면 해당 내용을 우선 보강한다.

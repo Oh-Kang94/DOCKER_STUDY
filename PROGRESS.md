@@ -15,6 +15,7 @@
 | 운영·레지스트리 | 정리 중 | 미확인 | 현재 필요한 범위의 예시와 주의 사항 |
 | Docker Swarm | 정리 중 | 미확인 | 사용자가 작성하는 다음 항목 |
 | Kubernetes 설치 | 초안 보강 완료 | 미실행 | Minikube·K3s 또는 kubeadm 실습 요청 시 진행 |
+| Kubernetes 기본 리소스 | 초안 보강 완료 | 미실행 | Pod·Deployment·Service 적용과 rollout 실습 |
 
 ## 기본 다음 행동
 
@@ -45,6 +46,13 @@
 - 설치 환경, Minikube, K3s, kubeadm, kOps와 GKE 문서를 작성했다.
 - Kubernetes 1.36, K3s, containerd와 Calico 3.32 공식 문서를 기준으로 예시를 정리했다.
 - 클러스터와 클라우드 리소스는 실제로 생성하지 않았다.
+
+### 2026-07-24 — Kubernetes 기본 리소스 문서 보강
+
+- Kubernetes 오브젝트와 클러스터 구조, Pod, ReplicaSet, Deployment와 Service의 다섯 문서를 작성했다.
+- 사용자가 `:`로 표시한 핵심은 각 문서의 중심 설명으로 유지하고, `-`로 적은 항목은 하위 개념, YAML·명령 예시와 Mermaid 흐름도로 확장했다.
+- Service 문서에는 EndpointSlice, ClusterIP, NodePort, LoadBalancer·MetalLB, `externalTrafficPolicy`의 `Cluster`·`Local` 흐름과 ExternalName을 포함했다.
+- 문서 속 Kubernetes 명령과 Manifest는 실제 클러스터에서 실행하지 않았다.
 
 ## 기록 템플릿
 
