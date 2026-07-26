@@ -90,10 +90,24 @@
 
 완료 과제: Deployment로 Pod 세 개를 배포하고 Service로 연결한 뒤 Pod 교체, scale, rolling update와 rollback 과정에서 ReplicaSet·EndpointSlice의 변화를 설명한다.
 
+### 9. Kubernetes 구성 관리
+
+- Namespace의 이름 범위와 namespaced·cluster-scoped 리소스
+- 같은 Namespace와 다른 Namespace의 Service DNS 접근
+- ConfigMap의 환경 변수·volume file 전달 방식
+- Secret의 Base64, etcd 저장 암호화와 최소 권한
+- Generic, private registry와 TLS Secret
+- Kustomize generator, content hash와 설정 변경 rollout
+- Kubernetes ConfigMap·Secret과 Docker Swarm Config·Secret 비교
+
+완료 과제: Namespace에 Deployment를 배포하고 ConfigMap과 Secret을 환경 변수·파일로 각각 전달한 뒤 Kustomize로 설정을 변경해 새 ReplicaSet이 생성되는 과정을 설명한다.
+
 ## 현재 문서 상태
 
 Docker Compose는 사용 이유부터 Swarm Stack 연동까지 다섯 문서가 보강되었다. Kubernetes 설치는 환경 비교, Minikube, kubeadm, K3s, kOps와 GKE의 여섯 문서로 정리되어 있다.
 
-최근 변경은 `k8s-start/`이며 Kubernetes 오브젝트와 클러스터 구조, Pod, ReplicaSet, Deployment와 Service의 기본 흐름을 다섯 문서로 보강했다. 문서 예시는 아직 실제 클러스터에서 실행하지 않았다.
+Kubernetes 기본 리소스는 오브젝트와 클러스터 구조, Pod, ReplicaSet, Deployment와 Service의 다섯 문서로 정리되어 있다.
+
+최근 변경은 `k8s-manage-config/`이며 Namespace, ConfigMap, Secret과 Kustomize를 네 문서로 보강했다. 문서 예시는 아직 실제 클러스터에서 실행하지 않았다.
 
 이는 추천 진도가 아니다. 사용자가 새 목차나 메모를 작성하면 해당 내용을 우선 보강한다.

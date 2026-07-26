@@ -4,7 +4,7 @@
 
 ## 현재 상태
 
-마지막 점검: 2026-07-24
+마지막 점검: 2026-07-27
 
 | 영역 | 문서 상태 | 실습 상태 | 다음 보강 후보 |
 | --- | --- | --- | --- |
@@ -16,6 +16,7 @@
 | Docker Swarm | 정리 중 | 미확인 | 사용자가 작성하는 다음 항목 |
 | Kubernetes 설치 | 초안 보강 완료 | 미실행 | Minikube·K3s 또는 kubeadm 실습 요청 시 진행 |
 | Kubernetes 기본 리소스 | 초안 보강 완료 | 미실행 | Pod·Deployment·Service 적용과 rollout 실습 |
+| Kubernetes 구성 관리 | 초안 보강 완료 | 미실행 | Namespace·ConfigMap·Secret·Kustomize 적용 실습 |
 
 ## 기본 다음 행동
 
@@ -53,6 +54,15 @@
 - 사용자가 `:`로 표시한 핵심은 각 문서의 중심 설명으로 유지하고, `-`로 적은 항목은 하위 개념, YAML·명령 예시와 Mermaid 흐름도로 확장했다.
 - Service 문서에는 EndpointSlice, ClusterIP, NodePort, LoadBalancer·MetalLB, `externalTrafficPolicy`의 `Cluster`·`Local` 흐름과 ExternalName을 포함했다.
 - 문서 속 Kubernetes 명령과 Manifest는 실제 클러스터에서 실행하지 않았다.
+
+### 2026-07-27 — Kubernetes 구성 관리 문서 보강
+
+- Namespace, ConfigMap, Secret과 Kustomize의 네 문서를 작성했다.
+- Namespace의 리소스 범위와 Service DNS, ConfigMap·Secret의 환경 변수 및 volume 전달 방식을 YAML과 Mermaid 예시로 정리했다.
+- Secret의 Base64와 저장 암호화를 구분하고 Generic, private registry, TLS type과 최소 권한 원칙을 추가했다.
+- Kustomize generator의 content hash가 Deployment의 Pod template을 변경해 rollout으로 이어지는 과정을 설명했다.
+- Kubernetes ConfigMap·Secret과 Docker Swarm Config·Secret의 저장 및 갱신 차이를 비교했다.
+- 문서 속 kubectl과 Kustomize 명령은 실제 클러스터에서 실행하지 않았다.
 
 ## 기록 템플릿
 
