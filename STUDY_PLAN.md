@@ -102,12 +102,27 @@
 
 완료 과제: Namespace에 Deployment를 배포하고 ConfigMap과 Secret을 환경 변수·파일로 각각 전달한 뒤 Kustomize로 설정을 변경해 새 ReplicaSet이 생성되는 과정을 설명한다.
 
+### 10. Kubernetes Gateway API와 외부 Routing
+
+- Ingress의 기본 역할과 Gateway API가 확장한 범위
+- GatewayClass, Gateway, HTTPRoute, Service와 Data plane의 관계
+- host, path, Header, Method 기반 Routing과 Traffic weight
+- LoadBalancer·NodePort 노출과 Bare metal의 MetalLB 연동
+- HTTPRoute Filter를 이용한 URLRewrite, RequestRedirect와 Header 변경
+- HTTPS Listener, TLS Secret, ReferenceGrant와 BackendTLSPolicy
+- allowedRoutes를 이용한 공유 Gateway와 여러 Controller 분리
+- 구현체 Profile, Core·Extended 기능과 Conformance 확인
+
+완료 과제: 하나의 Gateway 진입점에 여러 HTTPRoute를 연결해 host와 path에 따라 Service로 요청을 전달하고 TLS를 적용한 뒤, GatewayClass·Gateway·HTTPRoute·Service·EndpointSlice의 관계와 status Condition을 설명한다.
+
 ## 현재 문서 상태
 
 Docker Compose는 사용 이유부터 Swarm Stack 연동까지 다섯 문서가 보강되었다. Kubernetes 설치는 환경 비교, Minikube, kubeadm, K3s, kOps와 GKE의 여섯 문서로 정리되어 있다.
 
 Kubernetes 기본 리소스는 오브젝트와 클러스터 구조, Pod, ReplicaSet, Deployment와 Service의 다섯 문서로 정리되어 있다.
 
-최근 변경은 `k8s-manage-config/`이며 Namespace, ConfigMap, Secret과 Kustomize를 네 문서로 보강했다. 문서 예시는 아직 실제 클러스터에서 실행하지 않았다.
+Kubernetes 구성 관리는 Namespace, ConfigMap, Secret과 Kustomize의 네 문서로 정리되어 있다.
+
+최근 변경은 `k8s-ingress/`이며 Ingress의 기본 배경 이후 내용을 현재 Gateway API 중심으로 재구성했다. GatewayClass·Gateway·HTTPRoute, Controller와 Data plane, 구조화된 Filter, TLS, ReferenceGrant와 여러 Gateway 운영을 일곱 문서로 정리했다. 문서 예시는 아직 실제 클러스터에서 실행하지 않았다.
 
 이는 추천 진도가 아니다. 사용자가 새 목차나 메모를 작성하면 해당 내용을 우선 보강한다.

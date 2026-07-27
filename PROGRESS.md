@@ -17,6 +17,7 @@
 | Kubernetes 설치 | 초안 보강 완료 | 미실행 | Minikube·K3s 또는 kubeadm 실습 요청 시 진행 |
 | Kubernetes 기본 리소스 | 초안 보강 완료 | 미실행 | Pod·Deployment·Service 적용과 rollout 실습 |
 | Kubernetes 구성 관리 | 초안 보강 완료 | 미실행 | Namespace·ConfigMap·Secret·Kustomize 적용 실습 |
+| Kubernetes Gateway API | 초안 재구성 완료 | 미실행 | 구현체 선택 후 Gateway·HTTPRoute·TLS 실습 |
 
 ## 기본 다음 행동
 
@@ -63,6 +64,15 @@
 - Kustomize generator의 content hash가 Deployment의 Pod template을 변경해 rollout으로 이어지는 과정을 설명했다.
 - Kubernetes ConfigMap·Secret과 Docker Swarm Config·Secret의 저장 및 갱신 차이를 비교했다.
 - 문서 속 kubectl과 Kustomize 명령은 실제 클러스터에서 실행하지 않았다.
+
+### 2026-07-27 — Kubernetes Gateway API 문서 재구성
+
+- 첫 문서에 Ingress의 기본 배경만 남기고 이후 여섯 문서를 현재 Gateway API 중심으로 전면 재작성했다.
+- GatewayClass, Gateway, HTTPRoute, Controller, Data plane, Service와 Pod의 연결을 YAML과 Mermaid로 정리했다.
+- Service별 LoadBalancer와 공유 Gateway 구조, Worker Node 0~2 요청 흐름, host·path·Header Routing과 Traffic weight를 추가했다.
+- URLRewrite, RequestRedirect, Header Filter, HTTPS Listener, ReferenceGrant와 BackendTLSPolicy를 안정 API 형식으로 설명했다.
+- 공유 Gateway, 여러 GatewayClass·Controller, Core·Extended 기능과 Conformance를 기준으로 구현체를 선택하도록 정리했다.
+- 문서 속 kubectl, curl, OpenSSL 명령과 Manifest는 실제 환경에서 실행하지 않았다.
 
 ## 기록 템플릿
 
