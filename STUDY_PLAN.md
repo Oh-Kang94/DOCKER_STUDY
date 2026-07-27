@@ -129,6 +129,21 @@
 
 완료 과제: 유지보수되는 CSI Driver와 StorageClass를 선택해 PVC로 Volume을 동적 생성하고 Pod에서 사용한 뒤, Binding 조건·Topology·Reclaim Policy와 Backup 책임을 설명한다.
 
+### 12. Kubernetes 인증·인가와 RBAC
+
+- TLS, Authentication, Authorization과 Admission의 API 요청 순서
+- ServiceAccount Identity와 짧은 수명의 Projected Token
+- Role·ClusterRole과 RoleBinding·ClusterRoleBinding의 범위
+- apiGroups, resources, subresources와 verbs를 이용한 최소 권한 설계
+- Cluster 내부·외부에서 ServiceAccount로 API Server에 접근하는 방법
+- 공식 SDK의 In-cluster 인증과 Token Rotation
+- ImagePullSecret과 API 인증 Credential의 역할 차이
+- kubeconfig의 clusters, users, contexts와 안전한 Credential 관리
+- 외부 Identity Provider의 User·Group Mapping과 OIDC 기반 사람 인증
+- X.509 Client Certificate의 CSR·승인·RBAC 연결과 회수 한계
+
+완료 과제: 사람과 Workload Identity를 구분하고, 최소 권한 Role을 ServiceAccount 또는 Group에 연결한 뒤 Authentication과 Authorization 실패를 각각 진단하고 Credential 수명·회수 방법을 설명한다.
+
 ## 현재 문서 상태
 
 Docker Compose는 사용 이유부터 Swarm Stack 연동까지 다섯 문서가 보강되었다. Kubernetes 설치는 환경 비교, Minikube, kubeadm, K3s, kOps와 GKE의 여섯 문서로 정리되어 있다.
@@ -139,6 +154,8 @@ Kubernetes 구성 관리는 Namespace, ConfigMap, Secret과 Kustomize의 네 문
 
 Kubernetes 외부 Routing은 Ingress의 기본 배경 이후 내용을 현재 Gateway API 중심으로 재구성했다. GatewayClass·Gateway·HTTPRoute, Controller와 Data plane, 구조화된 Filter, TLS, ReferenceGrant와 여러 Gateway 운영을 일곱 문서로 정리했다.
 
-최근 변경은 `k8s-pv-pvc/`이며 Volume 필요성, Local·임시 Volume, NFS, PV·PVC Binding, Reclaim Policy와 StorageClass·Dynamic Provisioning을 여덟 문서로 보강했다. 신규 운영은 CSI Driver와 Retain·Delete를 중심으로 하고 Deprecated Recycle은 과거 방식으로 분리했다. 문서 예시는 아직 실제 클러스터에서 실행하지 않았다.
+Kubernetes Storage는 Volume 필요성, Local·임시 Volume, NFS, PV·PVC Binding, Reclaim Policy와 StorageClass·Dynamic Provisioning을 여덟 문서로 보강했다. 신규 운영은 CSI Driver와 Retain·Delete를 중심으로 하고 Deprecated Recycle은 과거 방식으로 분리했다.
+
+최근 변경은 `k8s-auth/`이며 API 요청의 인증·인가, ServiceAccount, RBAC, Cluster 내부·외부 API 접근, SDK, ImagePullSecret, kubeconfig, User·Group과 X.509 인증을 열한 문서로 정리했다. 신규 사용은 짧은 Projected ServiceAccount Token과 OIDC 기반 사람 인증을 우선하고 장기 ServiceAccount Token Secret은 예외로 구분했다. 문서 예시는 아직 실제 클러스터에서 실행하지 않았다.
 
 이는 추천 진도가 아니다. 사용자가 새 목차나 메모를 작성하면 해당 내용을 우선 보강한다.

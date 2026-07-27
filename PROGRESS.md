@@ -19,6 +19,7 @@
 | Kubernetes 구성 관리 | 초안 보강 완료 | 미실행 | Namespace·ConfigMap·Secret·Kustomize 적용 실습 |
 | Kubernetes Gateway API | 초안 재구성 완료 | 미실행 | 구현체 선택 후 Gateway·HTTPRoute·TLS 실습 |
 | Kubernetes PV·PVC | 초안 보강 완료 | 미실행 | CSI Driver 선택 후 Dynamic Provisioning·Reclaim 실습 |
+| Kubernetes 인증·RBAC | 초안 보강 완료 | 미실행 | ServiceAccount·RoleBinding 적용 후 401·403 진단 실습 |
 
 ## 기본 다음 행동
 
@@ -84,6 +85,15 @@
 - ReadWriteOncePod, WaitForFirstConsumer, Default StorageClass, Volume Expansion과 CSI Driver 유지보수 기준을 반영했다.
 - Persistence와 Backup을 구분하고 NFS Backup Repository의 격리·보존·Restore Test 원칙을 추가했다.
 - 문서 속 kubectl, Helm, Linux Package, NFS와 CSI 명령 및 Manifest는 실제 환경에서 실행하지 않았다.
+
+### 2026-07-27 — Kubernetes 인증·RBAC 문서 보강
+
+- API 요청 보안, 인증·인가 과정, ServiceAccount, Role·ClusterRole, API Server 접근, SDK, ImagePullSecret, kubeconfig, User·Group과 X.509의 열한 문서를 작성했다.
+- 사용자가 `:`로 표시한 인증·인가와 RBAC 핵심을 유지하고, `-` 항목을 YAML·CLI 예시와 Mermaid 요청 흐름으로 확장했다.
+- ServiceAccount Token은 TokenRequest 기반의 짧은 Projected Token을 기본으로 설명하고 장기 Token Secret은 제한적인 예외로 분리했다.
+- RBAC의 Namespace·Cluster 범위, Additive 권한, Aggregated ClusterRole, 최소 권한과 `kubectl auth can-i` 검증 방법을 정리했다.
+- 사람 인증은 외부 IdP·OIDC를 우선 방향으로 두고 X.509의 CN·O Mapping, CSR 승인과 인증서 폐기 미지원에 따른 짧은 수명 원칙을 추가했다.
+- 문서 속 kubectl, curl, OpenSSL, SDK 명령과 Manifest는 실제 환경에서 실행하지 않았다.
 
 ## 기록 템플릿
 
