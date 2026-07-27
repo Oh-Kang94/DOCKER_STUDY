@@ -18,6 +18,7 @@
 | Kubernetes 기본 리소스 | 초안 보강 완료 | 미실행 | Pod·Deployment·Service 적용과 rollout 실습 |
 | Kubernetes 구성 관리 | 초안 보강 완료 | 미실행 | Namespace·ConfigMap·Secret·Kustomize 적용 실습 |
 | Kubernetes Gateway API | 초안 재구성 완료 | 미실행 | 구현체 선택 후 Gateway·HTTPRoute·TLS 실습 |
+| Kubernetes PV·PVC | 초안 보강 완료 | 미실행 | CSI Driver 선택 후 Dynamic Provisioning·Reclaim 실습 |
 
 ## 기본 다음 행동
 
@@ -73,6 +74,16 @@
 - URLRewrite, RequestRedirect, Header Filter, HTTPS Listener, ReferenceGrant와 BackendTLSPolicy를 안정 API 형식으로 설명했다.
 - 공유 Gateway, 여러 GatewayClass·Controller, Core·Extended 기능과 Conformance를 기준으로 구현체를 선택하도록 정리했다.
 - 문서 속 kubectl, curl, OpenSSL 명령과 Manifest는 실제 환경에서 실행하지 않았다.
+
+### 2026-07-27 — Kubernetes PV·PVC 문서 보강
+
+- PersistentVolume 필요성, Local·임시 Volume, NFS, PV·PVC 역할 분리와 사용, Binding 조건, Reclaim Policy와 StorageClass의 여덟 문서를 작성했다.
+- emptyDir·hostPath·Local PV의 Lifecycle과 위험을 구분하고, NFS 정적 PV와 CSI Dynamic Provisioning 구성을 추가했다.
+- Capacity, Access Mode, VolumeMode, StorageClass, Label Selector와 Pre-binding 조건을 YAML과 흐름도로 정리했다.
+- Retain·Delete Lifecycle과 삭제 보호를 설명하고 Deprecated Recycle은 신규 사용하지 않는 과거 방식으로 분리했다.
+- ReadWriteOncePod, WaitForFirstConsumer, Default StorageClass, Volume Expansion과 CSI Driver 유지보수 기준을 반영했다.
+- Persistence와 Backup을 구분하고 NFS Backup Repository의 격리·보존·Restore Test 원칙을 추가했다.
+- 문서 속 kubectl, Helm, Linux Package, NFS와 CSI 명령 및 Manifest는 실제 환경에서 실행하지 않았다.
 
 ## 기록 템플릿
 

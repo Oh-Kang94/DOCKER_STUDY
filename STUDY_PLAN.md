@@ -115,6 +115,20 @@
 
 완료 과제: 하나의 Gateway 진입점에 여러 HTTPRoute를 연결해 host와 path에 따라 Service로 요청을 전달하고 TLS를 적용한 뒤, GatewayClass·Gateway·HTTPRoute·Service·EndpointSlice의 관계와 status Condition을 설명한다.
 
+### 11. Kubernetes PersistentVolume과 Storage
+
+- Stateless·Stateful 데이터와 Volume Lifecycle
+- emptyDir, hostPath와 Local PersistentVolume의 차이
+- NFS Server·정적 PV와 유지보수되는 NFS CSI Driver
+- PV·PVC를 이용한 Storage 제공자와 사용자의 역할 분리
+- Capacity, Access Mode, VolumeMode, StorageClass와 Selector Binding
+- Available·Bound·Released·Failed Lifecycle과 Retain·Delete
+- Deprecated Recycle Policy의 Dynamic Provisioning 대체
+- Default StorageClass, WaitForFirstConsumer와 Volume Expansion
+- Persistence, Snapshot과 Backup·Restore의 차이
+
+완료 과제: 유지보수되는 CSI Driver와 StorageClass를 선택해 PVC로 Volume을 동적 생성하고 Pod에서 사용한 뒤, Binding 조건·Topology·Reclaim Policy와 Backup 책임을 설명한다.
+
 ## 현재 문서 상태
 
 Docker Compose는 사용 이유부터 Swarm Stack 연동까지 다섯 문서가 보강되었다. Kubernetes 설치는 환경 비교, Minikube, kubeadm, K3s, kOps와 GKE의 여섯 문서로 정리되어 있다.
@@ -123,6 +137,8 @@ Kubernetes 기본 리소스는 오브젝트와 클러스터 구조, Pod, Replica
 
 Kubernetes 구성 관리는 Namespace, ConfigMap, Secret과 Kustomize의 네 문서로 정리되어 있다.
 
-최근 변경은 `k8s-ingress/`이며 Ingress의 기본 배경 이후 내용을 현재 Gateway API 중심으로 재구성했다. GatewayClass·Gateway·HTTPRoute, Controller와 Data plane, 구조화된 Filter, TLS, ReferenceGrant와 여러 Gateway 운영을 일곱 문서로 정리했다. 문서 예시는 아직 실제 클러스터에서 실행하지 않았다.
+Kubernetes 외부 Routing은 Ingress의 기본 배경 이후 내용을 현재 Gateway API 중심으로 재구성했다. GatewayClass·Gateway·HTTPRoute, Controller와 Data plane, 구조화된 Filter, TLS, ReferenceGrant와 여러 Gateway 운영을 일곱 문서로 정리했다.
+
+최근 변경은 `k8s-pv-pvc/`이며 Volume 필요성, Local·임시 Volume, NFS, PV·PVC Binding, Reclaim Policy와 StorageClass·Dynamic Provisioning을 여덟 문서로 보강했다. 신규 운영은 CSI Driver와 Retain·Delete를 중심으로 하고 Deprecated Recycle은 과거 방식으로 분리했다. 문서 예시는 아직 실제 클러스터에서 실행하지 않았다.
 
 이는 추천 진도가 아니다. 사용자가 새 목차나 메모를 작성하면 해당 내용을 우선 보강한다.
