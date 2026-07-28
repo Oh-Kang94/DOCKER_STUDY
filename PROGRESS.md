@@ -24,6 +24,7 @@
 | Kubernetes API 확장 | 초안 보강 완료 | 미실행 | Kubebuilder CRD·Controller 생성과 envtest 실습 |
 | Kubernetes 기타 Workload | 초안 보강 완료 | 미실행 | Job·DaemonSet·StatefulSet Lifecycle 실습 |
 | Kubernetes 모니터링 | 초안 보강 완료 | 미실행 | Metrics Pipeline·Prometheus·Grafana 통합 실습 |
+| Kubernetes Logging·Tracing | 초안 보강 완료 | 미실행 | Fluent Bit·Loki·OTel Collector·Tempo 통합 실습 |
 
 ## 기본 다음 행동
 
@@ -148,6 +149,17 @@
 - 기본 Local Volume은 다른 Node에서 같은 이름으로 새로 생성될 수 있지만 데이터는 공유되지 않으며, Bind Source가 없을 때 Task가 실패한다는 차이를 반영했다.
 - Active·Pause·Drain, Node·Engine Label, Constraint·Placement Preference와 Pending Task 진단 절차를 추가했다.
 - 문서 속 Docker, curl과 Host 명령은 실제 Swarm 환경에서 실행하지 않았다.
+
+### 2026-07-28 — Kubernetes Logging·Tracing 문서 보강
+
+- Kubernetes Container Log·Rotation과 구조화 Log, Fluent Bit·Loki, Distributed Trace, OpenTelemetry Collector, Tempo와 Grafana Correlation의 여덟 문서를 작성했다.
+- Log 수집은 Node별 Fluent Bit DaemonSet과 공식 Loki Output을 중심으로 하고 Loki 3.7.3에서 제거된 Promtail은 신규 기본 구성에서 제외했다.
+- Loki의 낮은 Cardinality Label과 Structured Metadata를 구분하고 Simple Scalable Mode의 폐기 방향, Monolithic·Distributed 선택 기준을 반영했다.
+- Trace·Span, W3C Context Propagation, Auto·Manual Instrumentation, Baggage와 Head·Tail Sampling을 설명했다.
+- OpenTelemetry Collector의 Agent·Gateway, OTLP Receiver·Processor·Exporter Pipeline과 Queue·Drop 진단을 추가했다.
+- Tempo 3.0의 Monolithic Mode와 Kafka 호환 System이 필요한 Microservices Architecture, TraceQL과 2.x Migration 주의를 반영했다.
+- Grafana에서 Metric Exemplar→Trace→Log와 Log Derived Field→Trace를 연결하고 Retention·용량·민감정보·접근 제어 기준을 정리했다.
+- 문서 속 Helm, kubectl, curl, LogQL, TraceQL과 Telemetry 예시는 실제 환경에서 실행하지 않았다.
 
 ## 기록 템플릿
 

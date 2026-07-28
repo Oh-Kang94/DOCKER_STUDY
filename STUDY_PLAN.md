@@ -209,6 +209,21 @@
 
 완료 과제: Application·Container·Node·Kubernetes Object Metric을 Prometheus에서 수집하고, RED·Golden Signal Dashboard와 Alert를 만든 뒤 Retention·Cardinality·장기 저장·접근 보안 책임을 설명한다.
 
+### 17. Kubernetes Logging과 Distributed Tracing
+
+- stdout·stderr, CRI Log File과 kubelet Rotation
+- Cluster-level Logging, 구조화 JSON Log와 민감정보 관리
+- Fluent Bit DaemonSet의 Tail·Metadata·Buffer Pipeline
+- Loki Label·Structured Metadata·Object Storage와 LogQL
+- Trace·Span, W3C Context Propagation과 OpenTelemetry Instrumentation
+- Head·Tail Sampling과 Trace·Log Context 연결
+- OpenTelemetry Collector Agent·Gateway와 OTLP Pipeline
+- Tempo 3.0 Monolithic·Microservices Architecture와 TraceQL
+- Grafana의 Metric→Trace→Log Correlation
+- Retention·Cardinality·Backpressure·Drop과 Pipeline 보안
+
+완료 과제: Application의 구조화 Log와 Trace를 Fluent Bit·Loki 및 OpenTelemetry Collector·Tempo로 전달하고, Grafana에서 Metric·Trace·Log를 오가며 장애를 조사한 뒤 Sampling·Retention·유실·민감정보 책임을 설명한다.
+
 ## 현재 문서 상태
 
 Docker Compose는 사용 이유부터 Swarm Stack 연동까지 다섯 문서가 보강되었다. Kubernetes 설치는 환경 비교, Minikube, kubeadm, K3s, kOps와 GKE의 여섯 문서로 정리되어 있다.
@@ -233,6 +248,8 @@ Kubernetes 기타 Workload는 Job·병렬 완료 조건·CronJob, DaemonSet 기�
 
 Kubernetes 모니터링은 Observability 기본, Application Metric, Metrics Server·APIService, kube-state-metrics, node_exporter·cAdvisor, Prometheus Operator·Alert, Thanos와 Grafana를 열한 문서로 정리했다.
 
-최근 변경은 `docker-swarm/`이며 현재 Docker Engine의 Swarm mode를 기준으로 네 문서를 보강했다. Manager는 홀수 Quorum을 중심으로 설명하고, Service 운영은 Config·Secret Rotation, Ingress·Overlay·docker_gwbridge, VIP·DNSRR, Local Volume의 Node 종속성과 Node Availability·Placement까지 포함했다. 문서 예시는 실제 Swarm에서 실행하지 않았다.
+Docker Swarm은 현재 Docker Engine의 Swarm mode를 기준으로 네 문서를 보강했다. Manager는 홀수 Quorum을 중심으로 설명하고, Service 운영은 Config·Secret Rotation, Ingress·Overlay·docker_gwbridge, VIP·DNSRR, Local Volume의 Node 종속성과 Node Availability·Placement까지 포함했다.
+
+최근 변경은 `k8s-logging-tracing/`이며 Kubernetes Log 구조, Fluent Bit·Loki, Distributed Trace, OpenTelemetry Collector, Tempo 3.0과 Grafana Correlation을 여덟 문서로 정리했다. 신규 Log Agent에서 제거된 Promtail은 제외하고 Fluent Bit 공식 Loki Output을 사용하며, Loki Simple Scalable Mode의 폐기 방향과 Tempo 3.0의 Kafka 기반 Microservices Architecture를 반영했다. 문서 예시는 실제 Cluster에서 실행하지 않았다.
 
 이는 추천 진도가 아니다. 사용자가 새 목차나 메모를 작성하면 해당 내용을 우선 보강한다.
