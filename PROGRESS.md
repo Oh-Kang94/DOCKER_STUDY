@@ -13,7 +13,7 @@
 | 네트워크·볼륨 | 정리 중 | 미확인 | 앱과 DB 연결 예시 |
 | Docker Compose | 초안 보강 완료 | 미실행 | 필요할 때 예제 Compose 파일 실습 |
 | 운영·레지스트리 | 정리 중 | 미확인 | 현재 필요한 범위의 예시와 주의 사항 |
-| Docker Swarm | 정리 중 | 미확인 | 사용자가 작성하는 다음 항목 |
+| Docker Swarm | 초안 보강 완료 | 미실행 | 다중 Node에서 Service·Network·Storage·Drain 통합 실습 |
 | Kubernetes 설치 | 초안 보강 완료 | 미실행 | Minikube·K3s 또는 kubeadm 실습 요청 시 진행 |
 | Kubernetes 기본 리소스 | 초안 보강 완료 | 미실행 | Pod·Deployment·Service 적용과 rollout 실습 |
 | Kubernetes 구성 관리 | 초안 보강 완료 | 미실행 | Namespace·ConfigMap·Secret·Kustomize 적용 실습 |
@@ -138,6 +138,16 @@
 - 신규 Kubernetes 수집은 Prometheus Operator의 ServiceMonitor·PodMonitor·PrometheusRule을 중심으로 설명하고 Annotation Scrape는 구현체 Convention으로 분리했다.
 - Thanos의 Sidecar·Query·Store Gateway·Compactor와 Object Storage 권한, Grafana Dashboard ID·Revision 고정 및 Git Provisioning 기준을 추가했다.
 - 문서 속 kubectl, curl, Docker, PromQL과 Manifest는 실제 환경에서 실행하지 않았다.
+
+### 2026-07-28 — Docker Swarm 추가 문서 보강
+
+- Swarm 도입 판단, Manager·Worker와 Raft Quorum, Cluster 구축, Service 운영과 Node Scheduling의 네 문서를 보강했다.
+- Manager 수를 단순한 `2n-1` 규칙 대신 과반수 Quorum과 3·5개 홀수 구성으로 수정하고, 기본 Network Port에서 불필요한 `4789/tcp`를 제거했다.
+- Replicated·Global Service, Task 장애 복구, Rolling Update·Rollback을 명령과 `curl` 확인 예시로 정리했다.
+- Config·Secret의 불변성과 Version 기반 Rotation, Ingress Routing Mesh·Overlay·docker_gwbridge와 VIP·DNSRR Discovery를 추가했다.
+- 기본 Local Volume은 다른 Node에서 같은 이름으로 새로 생성될 수 있지만 데이터는 공유되지 않으며, Bind Source가 없을 때 Task가 실패한다는 차이를 반영했다.
+- Active·Pause·Drain, Node·Engine Label, Constraint·Placement Preference와 Pending Task 진단 절차를 추가했다.
+- 문서 속 Docker, curl과 Host 명령은 실제 Swarm 환경에서 실행하지 않았다.
 
 ## 기록 템플릿
 

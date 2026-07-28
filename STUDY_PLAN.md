@@ -62,11 +62,16 @@
 ### 6. Swarm
 
 - node, service, task의 관계
+- manager Raft quorum, join token과 cluster 보안
+- replicated, global과 완료형 job service
 - replica 확장, rolling update, rollback
-- overlay network와 service discovery
-- manager quorum과 장애 시 동작
+- config·secret의 전달과 version 기반 rotation
+- ingress routing mesh, overlay, docker_gwbridge와 service discovery
+- local volume·bind mount의 node 종속성과 shared storage
+- node availability, label, constraint와 placement preference
+- manager quorum과 node·task 장애 시 동작
 
-완료 과제: 서비스를 배포·확장·업데이트하고 실패한 업데이트를 롤백한 뒤 각 단계의 task 변화를 설명한다.
+완료 과제: Replicated·Global Service를 배포하고 장애 복구·Rolling Update·Rollback을 관찰한 뒤 Network·Storage·Placement와 Manager Quorum의 운영 책임을 설명한다.
 
 ### 7. Kubernetes 설치
 
@@ -208,6 +213,8 @@
 
 Docker Compose는 사용 이유부터 Swarm Stack 연동까지 다섯 문서가 보강되었다. Kubernetes 설치는 환경 비교, Minikube, kubeadm, K3s, kOps와 GKE의 여섯 문서로 정리되어 있다.
 
+Docker Swarm은 도입 판단, Manager·Worker와 Quorum, Cluster 구축, Service·Task, 장애 복구·Rolling Update, Config·Secret, Network·Discovery·Volume과 Node Scheduling을 네 문서로 정리했다.
+
 Kubernetes 기본 리소스는 오브젝트와 클러스터 구조, Pod, ReplicaSet, Deployment와 Service의 다섯 문서로 정리되어 있다.
 
 Kubernetes 구성 관리는 Namespace, ConfigMap, Secret과 Kustomize의 네 문서로 정리되어 있다.
@@ -224,6 +231,8 @@ Kubernetes API 확장은 Controller와 Reconciliation, Custom Resource 도입, C
 
 Kubernetes 기타 Workload는 Job·병렬 완료 조건·CronJob, DaemonSet 기본·Scheduling, StatefulSet Identity·Storage 운영을 일곱 문서로 정리했다.
 
-최근 변경은 `k8s-monitor/`이며 Observability 기본, Application Metric, Metrics Server·APIService, kube-state-metrics, node_exporter·cAdvisor, Prometheus Operator·Alert, Thanos와 Grafana를 열한 문서로 정리했다. 신규 구성은 ServiceMonitor·PrometheusRule과 Git 기반 Grafana Provisioning을 중심으로 하고 Metrics Server는 HPA·kubectl top용 최소 Pipeline으로 구분했다. 문서 예시는 아직 실제 클러스터에서 실행하지 않았다.
+Kubernetes 모니터링은 Observability 기본, Application Metric, Metrics Server·APIService, kube-state-metrics, node_exporter·cAdvisor, Prometheus Operator·Alert, Thanos와 Grafana를 열한 문서로 정리했다.
+
+최근 변경은 `docker-swarm/`이며 현재 Docker Engine의 Swarm mode를 기준으로 네 문서를 보강했다. Manager는 홀수 Quorum을 중심으로 설명하고, Service 운영은 Config·Secret Rotation, Ingress·Overlay·docker_gwbridge, VIP·DNSRR, Local Volume의 Node 종속성과 Node Availability·Placement까지 포함했다. 문서 예시는 실제 Swarm에서 실행하지 않았다.
 
 이는 추천 진도가 아니다. 사용자가 새 목차나 메모를 작성하면 해당 내용을 우선 보강한다.
