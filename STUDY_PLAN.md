@@ -175,6 +175,19 @@
 
 완료 과제: Namespaced Custom Resource API를 정의하고, Controller가 Child Resource를 반복 가능하게 Reconcile하며 Status·Condition·Finalizer를 처리하는 흐름과 CRD Version Upgrade 절차를 설명한다.
 
+### 15. Kubernetes Batch·Node·Stateful Workload
+
+- Job의 완료 목표, 재시도·Deadline·TTL과 멱등성
+- completions·parallelism 조합과 Indexed Job의 작업 분할
+- CronJob Schedule·Time Zone·Concurrency와 중복 실행 대응
+- DaemonSet의 적격 Node별 Pod와 Node Agent 사용 사례
+- DaemonSet Scheduling·Toleration·RollingUpdate와 자원 관리
+- StatefulSet의 Ordinal·Stable DNS와 Headless Service
+- volumeClaimTemplates와 Pod별 PVC·PV Lifecycle
+- StatefulSet PVC Retention, Scale·RollingUpdate와 Backup 책임
+
+완료 과제: 멱등적인 Batch Job과 CronJob을 설계하고, Node별 DaemonSet과 Headless Service·고유 PVC를 갖는 StatefulSet의 생성·업데이트·장애 복구 동작을 설명한다.
+
 ## 현재 문서 상태
 
 Docker Compose는 사용 이유부터 Swarm Stack 연동까지 다섯 문서가 보강되었다. Kubernetes 설치는 환경 비교, Minikube, kubeadm, K3s, kOps와 GKE의 여섯 문서로 정리되어 있다.
@@ -191,6 +204,8 @@ Kubernetes 인증은 API 요청의 인증·인가, ServiceAccount, RBAC, Cluster
 
 Kubernetes 고급 운영은 Requests·Limits, CPU·GPU, QoS·OOM, Namespace 자원 정책, AdmissionPolicy, Scheduling, Affinity·Topology, Taint·Drain·PDB, Deployment·Jenkins, Pod Lifecycle과 HPA를 열네 문서로 정리했다. Kubernetes 1.36 기준 Stable 기능과 Beta 기능을 구분했다.
 
-최근 변경은 `k8s-custom/`이며 Controller와 Reconciliation, Custom Resource 도입, CRD Schema, Status·Finalizer·Version Lifecycle, Reconcile 구현, Kubebuilder·Operator SDK 선택과 운영 테스트를 일곱 문서로 정리했다. 예전 최상위 `spec.validation` 대신 Version별 `schema.openAPIV3Schema`를 사용하고 Kubebuilder를 새 Go Controller의 기본 선택, Operator SDK를 OLM Packaging이 필요한 선택으로 구분했다. 문서 예시는 아직 실제 클러스터에서 실행하지 않았다.
+Kubernetes API 확장은 Controller와 Reconciliation, Custom Resource 도입, CRD Schema, Status·Finalizer·Version Lifecycle, Reconcile 구현, Kubebuilder·Operator SDK 선택과 운영 테스트를 일곱 문서로 정리했다.
+
+최근 변경은 `k8s-other-objects/`이며 Job·병렬 완료 조건·CronJob, DaemonSet 기본·Scheduling, StatefulSet Identity·Storage 운영을 일곱 문서로 정리했다. Job은 동시 실행과 작업 분할 책임을 구분하고, DaemonSet은 모든 적격 Node, StatefulSet은 고유 Identity·PVC를 제공하지만 Application Data 복제까지 보장하지 않는다는 경계를 반영했다. 문서 예시는 아직 실제 클러스터에서 실행하지 않았다.
 
 이는 추천 진도가 아니다. 사용자가 새 목차나 메모를 작성하면 해당 내용을 우선 보강한다.

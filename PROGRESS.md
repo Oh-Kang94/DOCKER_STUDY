@@ -22,6 +22,7 @@
 | Kubernetes 인증·RBAC | 초안 보강 완료 | 미실행 | ServiceAccount·RoleBinding 적용 후 401·403 진단 실습 |
 | Kubernetes 고급 운영 | 초안 보강 완료 | 미실행 | Resource·Scheduling·Rollout·HPA 통합 실습 |
 | Kubernetes API 확장 | 초안 보강 완료 | 미실행 | Kubebuilder CRD·Controller 생성과 envtest 실습 |
+| Kubernetes 기타 Workload | 초안 보강 완료 | 미실행 | Job·DaemonSet·StatefulSet Lifecycle 실습 |
 
 ## 기본 다음 행동
 
@@ -116,6 +117,16 @@
 - Kubebuilder와 Go Operator SDK가 controller-runtime·Kubebuilder 기반을 공유함을 설명하고, 새 Go Controller는 Kubebuilder를 기본으로, OLM Bundle·Catalog가 필요하면 Operator SDK를 선택하도록 정리했다.
 - envtest·실제 Cluster E2E·Upgrade Test, Leader Election, 최소 RBAC, Metrics와 Finalizer Runbook을 유지보수 기준으로 추가했다.
 - 문서 속 kubectl, Kubebuilder, Operator SDK, Go Build와 Manifest는 실제 환경에서 실행하지 않았다.
+
+### 2026-07-28 — Kubernetes Job·DaemonSet·StatefulSet 문서 보강
+
+- Job 기본·병렬 완료 조건·CronJob, DaemonSet 기본·Scheduling, StatefulSet Identity·Storage 운영의 일곱 문서를 작성했다.
+- Job은 항상 Running인 Pod가 아니라 완료를 목표로 하며, `parallelism`은 동시 실행을 제공하지만 Work Partition은 Application 책임임을 명시했다.
+- Indexed Job, Pod Failure Policy, TTL, CronJob Time Zone·Concurrency·Scheduled Timestamp와 멱등성 기준을 추가했다.
+- DaemonSet은 모든 Node가 아니라 Selector·Affinity·Taint 조건을 통과한 적격 Node마다 실행된다고 수정하고 Control Plane Toleration·RollingUpdate·Node Agent 보안을 설명했다.
+- StatefulSet과 Headless Service의 Stable DNS, `volumeClaimTemplates`, ReadWriteOncePod, PVC Retention과 RollingUpdate·Partition을 정리했다.
+- StatefulSet은 Database Replication·Backup·Failover를 자동 제공하지 않으므로 유지보수되는 Operator나 Managed Service를 함께 검토하도록 추가했다.
+- 문서 속 kubectl, Job·CronJob 실행과 Manifest는 실제 환경에서 실행하지 않았다.
 
 ## 기록 템플릿
 
