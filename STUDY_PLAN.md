@@ -188,6 +188,22 @@
 
 완료 과제: 멱등적인 Batch Job과 CronJob을 설계하고, Node별 DaemonSet과 Headless Service·고유 PVC를 갖는 StatefulSet의 생성·업데이트·장애 복구 동작을 설명한다.
 
+### 16. Kubernetes Metrics와 Observability
+
+- Metrics·Logs·Traces Signal과 수집·저장·Alert 구조
+- Python·Go·Java·JavaScript Application Metric Instrumentation
+- Counter·Gauge·Histogram과 Label Cardinality 관리
+- Metrics Server·Resource Metrics API·kubectl top과 HPA Pipeline
+- Aggregation Layer·APIService와 kubelet `/metrics/resource`
+- kube-state-metrics의 Kubernetes Object State Metric
+- node_exporter와 kubelet/cAdvisor의 Node·Container Metric
+- Prometheus Operator·ServiceMonitor·PodMonitor와 PrometheusRule
+- PromQL, Recording Rule·Alertmanager와 Runbook
+- Thanos의 Object Storage·Global Query·Dedup·Compaction
+- Grafana Data Source·Dashboard Provisioning과 안전한 노출
+
+완료 과제: Application·Container·Node·Kubernetes Object Metric을 Prometheus에서 수집하고, RED·Golden Signal Dashboard와 Alert를 만든 뒤 Retention·Cardinality·장기 저장·접근 보안 책임을 설명한다.
+
 ## 현재 문서 상태
 
 Docker Compose는 사용 이유부터 Swarm Stack 연동까지 다섯 문서가 보강되었다. Kubernetes 설치는 환경 비교, Minikube, kubeadm, K3s, kOps와 GKE의 여섯 문서로 정리되어 있다.
@@ -206,6 +222,8 @@ Kubernetes 고급 운영은 Requests·Limits, CPU·GPU, QoS·OOM, Namespace 자�
 
 Kubernetes API 확장은 Controller와 Reconciliation, Custom Resource 도입, CRD Schema, Status·Finalizer·Version Lifecycle, Reconcile 구현, Kubebuilder·Operator SDK 선택과 운영 테스트를 일곱 문서로 정리했다.
 
-최근 변경은 `k8s-other-objects/`이며 Job·병렬 완료 조건·CronJob, DaemonSet 기본·Scheduling, StatefulSet Identity·Storage 운영을 일곱 문서로 정리했다. Job은 동시 실행과 작업 분할 책임을 구분하고, DaemonSet은 모든 적격 Node, StatefulSet은 고유 Identity·PVC를 제공하지만 Application Data 복제까지 보장하지 않는다는 경계를 반영했다. 문서 예시는 아직 실제 클러스터에서 실행하지 않았다.
+Kubernetes 기타 Workload는 Job·병렬 완료 조건·CronJob, DaemonSet 기본·Scheduling, StatefulSet Identity·Storage 운영을 일곱 문서로 정리했다.
+
+최근 변경은 `k8s-monitor/`이며 Observability 기본, Application Metric, Metrics Server·APIService, kube-state-metrics, node_exporter·cAdvisor, Prometheus Operator·Alert, Thanos와 Grafana를 열한 문서로 정리했다. 신규 구성은 ServiceMonitor·PrometheusRule과 Git 기반 Grafana Provisioning을 중심으로 하고 Metrics Server는 HPA·kubectl top용 최소 Pipeline으로 구분했다. 문서 예시는 아직 실제 클러스터에서 실행하지 않았다.
 
 이는 추천 진도가 아니다. 사용자가 새 목차나 메모를 작성하면 해당 내용을 우선 보강한다.
