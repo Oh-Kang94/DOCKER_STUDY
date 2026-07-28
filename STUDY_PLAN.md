@@ -160,6 +160,21 @@
 
 완료 과제: Namespace 자원 정책과 최소·최대 Workload 자원을 설계하고, 여러 Node에 Pod를 의도대로 분산한 뒤 RollingUpdate·Node Drain·HPA 상황에서 가용성과 상태 변화를 설명한다.
 
+### 14. Kubernetes API 확장과 Custom Controller
+
+- 명령형·선언형 제어와 Controller Reconciliation Loop
+- kube-controller-manager와 Custom Controller Manager의 역할 차이
+- Custom Resource·CRD·Controller로 구성되는 선언형 API
+- `apiextensions.k8s.io/v1`의 Version별 Structural OpenAPI Schema
+- spec·status, Condition, generation·observedGeneration과 Status Subresource
+- OwnerReference·Garbage Collection과 Finalizer Cleanup
+- served·storage Version, Conversion과 CRD Upgrade Lifecycle
+- controller-runtime Watch·Queue·Reconcile·Status Update
+- Kubebuilder와 Operator SDK·OLM의 선택 기준
+- envtest·E2E·Upgrade Test, 최소 RBAC와 운영 관측성
+
+완료 과제: Namespaced Custom Resource API를 정의하고, Controller가 Child Resource를 반복 가능하게 Reconcile하며 Status·Condition·Finalizer를 처리하는 흐름과 CRD Version Upgrade 절차를 설명한다.
+
 ## 현재 문서 상태
 
 Docker Compose는 사용 이유부터 Swarm Stack 연동까지 다섯 문서가 보강되었다. Kubernetes 설치는 환경 비교, Minikube, kubeadm, K3s, kOps와 GKE의 여섯 문서로 정리되어 있다.
@@ -174,6 +189,8 @@ Kubernetes Storage는 Volume 필요성, Local·임시 Volume, NFS, PV·PVC Bindi
 
 Kubernetes 인증은 API 요청의 인증·인가, ServiceAccount, RBAC, Cluster 내부·외부 API 접근, SDK, ImagePullSecret, kubeconfig, User·Group과 X.509 인증을 열한 문서로 정리했다. 신규 사용은 짧은 Projected ServiceAccount Token과 OIDC 기반 사람 인증을 우선하고 장기 ServiceAccount Token Secret은 예외로 구분했다.
 
-최근 변경은 `k8s-advanced/`이며 Requests·Limits, CPU·GPU, QoS·OOM, Namespace 자원 정책, AdmissionPolicy, Scheduling, Affinity·Topology, Taint·Drain·PDB, Deployment·Jenkins, Pod Lifecycle과 HPA를 열네 문서로 정리했다. Kubernetes 1.36 기준 Stable 기능을 기본으로 하고 Pod-level Resources와 DRA의 일부 확장 기능처럼 Beta인 기능은 지원 여부를 확인하도록 분리했다. DRA 핵심 기능은 Stable로 구분했다. 문서 예시는 아직 실제 클러스터에서 실행하지 않았다.
+Kubernetes 고급 운영은 Requests·Limits, CPU·GPU, QoS·OOM, Namespace 자원 정책, AdmissionPolicy, Scheduling, Affinity·Topology, Taint·Drain·PDB, Deployment·Jenkins, Pod Lifecycle과 HPA를 열네 문서로 정리했다. Kubernetes 1.36 기준 Stable 기능과 Beta 기능을 구분했다.
+
+최근 변경은 `k8s-custom/`이며 Controller와 Reconciliation, Custom Resource 도입, CRD Schema, Status·Finalizer·Version Lifecycle, Reconcile 구현, Kubebuilder·Operator SDK 선택과 운영 테스트를 일곱 문서로 정리했다. 예전 최상위 `spec.validation` 대신 Version별 `schema.openAPIV3Schema`를 사용하고 Kubebuilder를 새 Go Controller의 기본 선택, Operator SDK를 OLM Packaging이 필요한 선택으로 구분했다. 문서 예시는 아직 실제 클러스터에서 실행하지 않았다.
 
 이는 추천 진도가 아니다. 사용자가 새 목차나 메모를 작성하면 해당 내용을 우선 보강한다.

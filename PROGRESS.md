@@ -21,6 +21,7 @@
 | Kubernetes PV·PVC | 초안 보강 완료 | 미실행 | CSI Driver 선택 후 Dynamic Provisioning·Reclaim 실습 |
 | Kubernetes 인증·RBAC | 초안 보강 완료 | 미실행 | ServiceAccount·RoleBinding 적용 후 401·403 진단 실습 |
 | Kubernetes 고급 운영 | 초안 보강 완료 | 미실행 | Resource·Scheduling·Rollout·HPA 통합 실습 |
+| Kubernetes API 확장 | 초안 보강 완료 | 미실행 | Kubebuilder CRD·Controller 생성과 envtest 실습 |
 
 ## 기본 다음 행동
 
@@ -105,6 +106,16 @@
 - Kubernetes 1.36의 Pod-level Resources와 DRA 일부 확장 기능은 Beta로, DRA 핵심 기능·ValidatingAdmissionPolicy·Container Resource Metric은 Stable 기능으로 지원 상태를 구분했다.
 - ResourceQuota·LimitRange는 Built-in Admission 기능이고 ValidatingAdmissionPolicy는 Custom 검증용이므로 서로 대체하지 않는다는 경계를 반영했다.
 - 문서 속 kubectl, Jenkins, 부하 생성 명령과 Manifest는 실제 환경에서 실행하지 않았다.
+
+### 2026-07-28 — Kubernetes Custom Resource·Controller 문서 보강
+
+- 선언형 제어와 Reconciliation, Custom Resource 도입, CRD Schema, Lifecycle, Controller 구현, 도구 선택과 운영의 일곱 문서를 작성했다.
+- 사용자의 `:` 핵심을 중심으로 CRD→Controller→CR→Watch→Reconcile→Status 흐름을 YAML·Go 예시와 Mermaid로 확장했다.
+- 과거 최상위 `spec.validation` 표기는 `apiextensions.k8s.io/v1`의 `spec.versions[].schema.openAPIV3Schema`로 수정했다.
+- Status Subresource, Condition, generation·observedGeneration, OwnerReference, Finalizer와 served·storage Version Migration을 추가했다.
+- Kubebuilder와 Go Operator SDK가 controller-runtime·Kubebuilder 기반을 공유함을 설명하고, 새 Go Controller는 Kubebuilder를 기본으로, OLM Bundle·Catalog가 필요하면 Operator SDK를 선택하도록 정리했다.
+- envtest·실제 Cluster E2E·Upgrade Test, Leader Election, 최소 RBAC, Metrics와 Finalizer Runbook을 유지보수 기준으로 추가했다.
+- 문서 속 kubectl, Kubebuilder, Operator SDK, Go Build와 Manifest는 실제 환경에서 실행하지 않았다.
 
 ## 기록 템플릿
 
