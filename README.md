@@ -8,7 +8,9 @@ Docker의 개념을 정리하고 직접 실습한 결과를 기록하는 저장�
 - [현재 진행 상태](PROGRESS.md)
 - [Docker Engine 목차](docker-engine/0.index.md)
 - [Docker Swarm 목차](docker-swarm/0.index.md)
+- [Docker Swarm Ansible 자동화 목차](docker-swarm-ansible/0.index.md)
 - [Docker Compose 목차](docker-compose/0.index.md)
 - [Kubernetes 설치 목차](k8s-install/0.index.md)
+- [Helm 목차](helm/0.index.md)
 
 학습 코치의 진행 원칙과 안전 규칙은 [AGENTS.md](AGENTS.md)에 정의되어 있다.

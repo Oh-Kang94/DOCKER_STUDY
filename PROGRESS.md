@@ -4,7 +4,7 @@
 
 ## 현재 상태
 
-마지막 점검: 2026-07-28
+마지막 점검: 2026-07-31
 
 | 영역 | 문서 상태 | 실습 상태 | 다음 보강 후보 |
 | --- | --- | --- | --- |
@@ -14,6 +14,7 @@
 | Docker Compose | 초안 보강 완료 | 미실행 | 필요할 때 예제 Compose 파일 실습 |
 | 운영·레지스트리 | 정리 중 | 미확인 | 현재 필요한 범위의 예시와 주의 사항 |
 | Docker Swarm | 초안 보강 완료 | 미실행 | 다중 Node에서 Service·Network·Storage·Drain 통합 실습 |
+| Docker Swarm Ansible | 초안 보강 완료 | 미실행 | 실제 Inventory·Role·Playbook 작성과 3-Manager 검증 |
 | Kubernetes 설치 | 초안 보강 완료 | 미실행 | Minikube·K3s 또는 kubeadm 실습 요청 시 진행 |
 | Kubernetes 기본 리소스 | 초안 보강 완료 | 미실행 | Pod·Deployment·Service 적용과 rollout 실습 |
 | Kubernetes 구성 관리 | 초안 보강 완료 | 미실행 | Namespace·ConfigMap·Secret·Kustomize 적용 실습 |
@@ -25,6 +26,7 @@
 | Kubernetes 기타 Workload | 초안 보강 완료 | 미실행 | Job·DaemonSet·StatefulSet Lifecycle 실습 |
 | Kubernetes 모니터링 | 초안 보강 완료 | 미실행 | Metrics Pipeline·Prometheus·Grafana 통합 실습 |
 | Kubernetes Logging·Tracing | 초안 보강 완료 | 미실행 | Fluent Bit·Loki·OTel Collector·Tempo 통합 실습 |
+| Helm 4 | 초안 보강 완료 | 미실행 | 작은 Chart 작성과 Install·Upgrade·Rollback 검증 |
 
 ## 기본 다음 행동
 
@@ -160,6 +162,33 @@
 - Tempo 3.0의 Monolithic Mode와 Kafka 호환 System이 필요한 Microservices Architecture, TraceQL과 2.x Migration 주의를 반영했다.
 - Grafana에서 Metric Exemplar→Trace→Log와 Log Derived Field→Trace를 연결하고 Retention·용량·민감정보·접근 제어 기준을 정리했다.
 - 문서 속 Helm, kubectl, curl, LogQL, TraceQL과 Telemetry 예시는 실제 환경에서 실행하지 않았다.
+
+### 2026-07-31 — Helm 학습 목차 생성
+
+- `helm/0.index.md`에 기본 개념, Chart 작성, Release Lifecycle, 검증, OCI 배포와 운영 보안의 학습 순서를 구성했다.
+- 신규 학습은 Helm 4를 기준으로 하고 Helm 3 유지보수와 전환 항목을 별도로 두었다.
+- 개별 설명 문서, Chart 예제와 Kubernetes 실습은 생성하거나 실행하지 않았다.
+
+### 2026-07-31 — Helm 4·Docker Swarm Ansible 목차 재구성
+
+- `helm/0.index.md`를 처음 도입하는 Helm 4 환경에 맞춰 Server-Side Apply, kstatus, Multi-document Values, OCI Digest와 새 Plugin·CLI 동작이 기본 경로에 드러나도록 재작성했다.
+- Helm 3과 실험적인 Chart API v3는 기본 학습에서 제외하고 마지막 호환성 문서로 분리했다.
+- `docker-swarm-ansible/0.index.md`에 IP Inventory를 기준으로 온프레미스 Docker 설치, Swarm Bootstrap, Manager·Worker 가입, Registry·Config·Secret과 Stack 배포를 자동화하는 목차를 생성했다.
+- Ansible Playbook, Docker 설치, Swarm Cluster와 Stack은 실제로 생성하거나 실행하지 않았다.
+
+### 2026-07-31 — 신규 학습 문서 작성 기준 연결
+
+- `k8s-advanced/0.index.md`, `1.Requests와-Limits.md`와 `12.Deployment-배포전략과-Jenkins.md`를 이 저장소의 기술 문서 구조·밀도 기준으로 `AGENTS.md`에 명시했다.
+- `helm/`과 `docker-swarm-ansible/` 목차에서 실제 문서를 생성한 뒤 파일 링크와 주요 Anchor를 연결하도록 작성 순서를 정했다.
+- 이번 변경에서는 개별 Helm·Ansible 설명 문서와 실습 파일을 생성하지 않았다.
+
+### 2026-07-31 — Helm 4·Docker Swarm Ansible 문서 보강
+
+- Helm 4 기본부터 Chart 작성, Server-Side Apply 기반 Release Lifecycle, Dependency·Hook·Plugin, OCI·GitOps와 Helm 3 전환까지 열여덟 문서를 작성했다.
+- 온프레미스 IP Inventory를 기준으로 Docker 설치, 3-Manager Swarm Bootstrap, Registry·Config·Secret, Stack 배포, Node 교체·Backup과 Drift 관리까지 열여덟 문서를 작성했다.
+- 두 `0.index.md`를 실제 문서 링크와 주요 제목 Anchor를 제공하는 학습 목차로 변경했다.
+- `community.docker.docker_stack`의 Check Mode 제한, Swarm Manager Quorum과 Local Volume의 Node 종속성처럼 자동화에서 놓치기 쉬운 운영 경계를 반영했다.
+- 문서 속 Helm, kubectl, Ansible과 Docker 명령 및 Manifest는 실제 환경에서 실행하지 않았다.
 
 ## 기록 템플릿
 

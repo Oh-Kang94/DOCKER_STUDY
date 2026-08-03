@@ -224,6 +224,38 @@
 
 완료 과제: Application의 구조화 Log와 Trace를 Fluent Bit·Loki 및 OpenTelemetry Collector·Tempo로 전달하고, Grafana에서 Metric·Trace·Log를 오가며 장애를 조사한 뒤 Sampling·Retention·유실·민감정보 책임을 설명한다.
 
+### 18. Helm Package Management
+
+- Helm 4의 Chart·Values·Release·Revision과 Kubernetes Resource 관계
+- Chart API v2를 운영 기본값으로 사용하는 이유와 실험적인 v3의 범위
+- Multi-document Values·JSON Argument·Values Schema
+- 신규 Release의 Server-Side Apply와 기존 Release의 Apply 방식 Latching
+- `--rollback-on-failure`·`--force-replace`와 Release Lifecycle
+- kstatus 기반 상태 관찰과 Kubernetes Event 진단
+- Dependency·Content-based Cache·Library Chart·Hook·Test·CRD
+- CLI·Getter·Post-renderer Plugin과 선택적인 Wasm Runtime
+- OCI Digest 설치·Provenance·Registry Credential
+- Helm 3 호환성은 신규 경로가 아닌 전환 점검 항목으로 분리
+
+완료 과제: Helm 4로 작은 Application Chart를 작성해 Multi-document Values·Schema·Template을 검증하고, Server-Side Apply 기반 설치·업그레이드·롤백과 kstatus 상태 확인을 수행한 뒤 OCI Digest 배포와 Plugin·보안 책임을 설명한다.
+
+### 19. Docker Swarm Ansible 자동화
+
+- 온프레미스 Bootstrap Manager와 Raft Leader의 역할 차이
+- IP·역할 중심 Ansible Inventory와 Agentless SSH
+- SSH·sudo·고정 IP·Network Port·Registry Preflight
+- Docker Engine 설치와 Version Pinning
+- 첫 Manager 초기화와 Manager·Worker Join Token 자동 전달
+- Node Label·Availability·Placement를 Inventory로 관리
+- 사내 Registry·사설 CA·Image Digest
+- Ansible Vault·Swarm Config·Secret의 역할 분리
+- Swarm용 Compose Stack과 `community.docker.docker_stack`
+- Replica 수렴·Rolling Update·Rollback과 실패 판정
+- Manager Quorum·Node 교체·Swarm Backup·Autolock
+- Check Mode·Idempotency·Drift 관리와 CI/CD 연결
+
+완료 과제: Manager·Worker IP와 역할만 Inventory에 입력해 Docker 설치, 3-Manager Swarm 구성, Node Label, Registry 인증, Config·Secret과 Stack 배포를 반복 가능하게 수행하고, Node 추가·Rolling Update·Rollback·Manager 장애와 재실행 시 멱등성을 검증한다.
+
 ## 현재 문서 상태
 
 Docker Compose는 사용 이유부터 Swarm Stack 연동까지 다섯 문서가 보강되었다. Kubernetes 설치는 환경 비교, Minikube, kubeadm, K3s, kOps와 GKE의 여섯 문서로 정리되어 있다.
@@ -251,5 +283,9 @@ Kubernetes 모니터링은 Observability 기본, Application Metric, Metrics Ser
 Docker Swarm은 현재 Docker Engine의 Swarm mode를 기준으로 네 문서를 보강했다. Manager는 홀수 Quorum을 중심으로 설명하고, Service 운영은 Config·Secret Rotation, Ingress·Overlay·docker_gwbridge, VIP·DNSRR, Local Volume의 Node 종속성과 Node Availability·Placement까지 포함했다.
 
 최근 변경은 `k8s-logging-tracing/`이며 Kubernetes Log 구조, Fluent Bit·Loki, Distributed Trace, OpenTelemetry Collector, Tempo 3.0과 Grafana Correlation을 여덟 문서로 정리했다. 신규 Log Agent에서 제거된 Promtail은 제외하고 Fluent Bit 공식 Loki Output을 사용하며, Loki Simple Scalable Mode의 폐기 방향과 Tempo 3.0의 Kafka 기반 Microservices Architecture를 반영했다. 문서 예시는 실제 Cluster에서 실행하지 않았다.
+
+Helm은 Helm 4 기본, Chart 작성, Release Lifecycle, Dependency·Plugin, 검증·OCI·GitOps와 Helm 3 전환을 열여덟 문서로 정리했다. Server-Side Apply, kstatus, Multi-document Values, OCI Digest와 새 CLI Flag를 기본 경로에 두고 실험적인 Chart API v3는 마지막 호환성 항목으로 분리했다. 문서 예시는 실제 Cluster에서 실행하지 않았다.
+
+Docker Swarm Ansible 자동화는 IP Inventory, 온프레미스 Preflight, Docker 설치, Cluster 가입, Registry·Config·Secret, Stack 배포, Node 운영·Backup과 Drift 관리를 열여덟 문서로 정리했다. Bootstrap Manager와 동적으로 선출되는 Raft Leader를 구분하고, 접근 가능한 Manager를 이용하는 반복 가능한 자동화를 기준으로 삼았다. Playbook과 Swarm Cluster는 실제로 실행하지 않았다.
 
 이는 추천 진도가 아니다. 사용자가 새 목차나 메모를 작성하면 해당 내용을 우선 보강한다.
